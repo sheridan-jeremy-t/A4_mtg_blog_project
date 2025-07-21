@@ -18,8 +18,8 @@ def topics_with_posts(db, user):
 
     for i in range(5):
         post = Post.objects.create(
-            title = f'{topic1} Post {i}',
-            content = f'Test content for {topic1} post {i}',
+            title = f'Python Post {i}',
+            content = f'Test content for Python post {i}',
             author = user,
             status = 'published',
         )
@@ -27,8 +27,8 @@ def topics_with_posts(db, user):
 
     for i in range(3):
         post = Post.objects.create(
-            title = f'{topic2} Post {i}',
-            content = f'Test content for {topic2} post {i}',
+            title = f'Django Post {i}',
+            content = f'Test content for Django post {i}',
             author = user,
             status = 'published',
         )
@@ -38,7 +38,7 @@ def topics_with_posts(db, user):
 
 def test_base_context_returns_top_topics(topics_with_posts):
     """Test that base context returns top topics"""
-    topic1, topic2,topic3 = topics_with_posts
+    topic1, topic2, topic3 = topics_with_posts
     factory = RequestFactory()
     request = factory.get('/')
     context = base_context(request)
