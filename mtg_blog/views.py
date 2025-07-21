@@ -21,3 +21,20 @@ class TopicListView(ListView):
 
     def get_query(self):
         return Topic.objects.all().order_by('name')
+
+class TopicDetailView(DetailView):
+    model = Topic
+    template_name = 'mtg_blog_app/topic_detail.html'
+    context_object_name = 'topic'
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        topic = self.get_object()
+
+        context['posts'] = topic.post_set.filter(
+            status = 'published'
+        ).order_by('-published_date')
+
+        return context
