@@ -1,3 +1,4 @@
+import pytest
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -62,3 +63,8 @@ class TestPostModel(TestCase):
             status = 'published'
         )
         self.assertIsNotNone(post.published)
+@pytest.mark.django_db
+def test_topic_get_absolute_url(client):
+    topic = Topic.objects.create(name = 'Red Aggro', slug='red-aggro')
+    expected_url = 'topics/red-aggro'
+    assert topic.get_absolute_url() == expected_url
