@@ -7,11 +7,11 @@
     <ul>
         {% for topic in topics %}
         <li>
-            {{topic.name}} ({{ topic.num_posts}})
+            {{ topic.name }} ({{ topic.num_posts }})
         </li>
         {%empty%}
         <li>No topics yet.</li>
-        {% endfor%}
+        {% endfor %}
     </ul>
 </aside>
 <section>
