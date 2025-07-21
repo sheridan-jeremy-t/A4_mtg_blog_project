@@ -16,8 +16,8 @@ class TopicListView(ListView):
     '''List all topics alphabetically'''
 
     model = Topic
-    template_name = 'mtg_blog.templates.mtg_blog/topic_list.html'
+    template_name = 'mtg_blog_app/topic_list.html'
     context_object_name = 'topic_list'
 
-    def get_query(selfself):
+    def get_query(self):
         return Topic.objects.all().order_by('name')

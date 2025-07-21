@@ -1,4 +1,4 @@
-{% extends 'base.html %}
+{% extends 'mtg_blog_app/base.html' %}
 
 {% block title %}Topics{% endblock %}
 
@@ -11,13 +11,13 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="{{ topic.get_absolute_url"></a>
+                        <a href="{{ topic.get_absolute_url }}">{{ topic.name }}</a>
                     </h5>
                 </div>
             </div>
         </div>
         {% empty %}
-            <p class="{No topics found}"></p>
+            <p class="No topics found"></p>
         {% endfor %}
     </div>
 </div>

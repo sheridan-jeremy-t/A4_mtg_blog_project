@@ -14,21 +14,20 @@ def test_home_view_renders_topic(client):
     )
     post.topics.add(topic1)
 
-    response = client.get(reverse('home'))
+    response = client.get(reverse('mtg_blog_app:home'))
     assert response.status_code == 200
     assert b'Red Aggro' in response.content
-
-def test_topic_list_view(self):
+@pytest.mark.django_db
+def test_topic_list_view(client, db):
 
     Topic.objects.create(name='Favourite Art', slug='favourite-art')
     Topic.objects.create(name='MTG Lore', slug='mtg-lore')
 
-    response = self.client.get('/topics/')
-
-    self.assertEqual(response.status_code, 200)
-    self.assertContains(response, 'Favourite Art')
-    self.assertContains(response, 'MTG Lore')
+    response = client.get(reverse('mtg_blog_app:topic_list'))
+    assert response.status_code == 200
+    assert 'Favourite Art' in response.content.decode()
+    assert 'MTG Lore' in response.content.decode()
 
     topics = response.context['topic_list']
-    self.assertEqual(topics[0].name, 'Favourite Art')
-    self.assertEqual(topics[1].name, 'MTG Lore')
+    assert topics[0].name, 'Favourite Art'
+    assert topics[1].name, 'MTG Lore'
