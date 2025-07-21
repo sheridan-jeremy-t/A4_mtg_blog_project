@@ -33,8 +33,8 @@ class TopicDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         topic = self.get_object()
 
-        context['posts'] = topic.post_set.filter(
+        context['posts'] = topic.posts.filter(
             status = 'published'
-        ).order_by('-published_date')
+        ).order_by('-published')
 
         return context
