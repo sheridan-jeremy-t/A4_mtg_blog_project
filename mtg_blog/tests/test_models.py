@@ -64,7 +64,7 @@ class TestPostModel(TestCase):
         )
         self.assertIsNotNone(post.published)
 @pytest.mark.django_db
-def test_topic_get_absolute_url(client):
+def test_topic_get_absolute_url():
     topic = Topic.objects.create(name = 'Red Aggro', slug='red-aggro')
-    expected_url = 'topics/red-aggro'
+    expected_url = '/topic/red-aggro'
     assert topic.get_absolute_url() == expected_url
