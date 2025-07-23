@@ -28,7 +28,7 @@ def test_topic_list_view(client):
     assert 'Favourite Art' in response.content.decode()
     assert 'MTG Lore' in response.content.decode()
 
-    topics = response.context['topic_list']
+    topics = response.context['topics']
     assert topics[0].name == 'Favourite Art'
     assert topics[1].name == 'MTG Lore'
 

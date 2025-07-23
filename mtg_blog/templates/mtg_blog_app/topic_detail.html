@@ -1,27 +1,14 @@
 {% extends 'mtg_blog_app/base.html' %}
 
-{% block title %}{{ topic.name }}{% endblock %}
-
 {% block content %}
-<div>
-    <h1>{{ topic.name }}</h1>
-
-    <div>
-        {% for post in posts %}
-        <div>
-            <h5>
-                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-            </h5>
-            <p>
-                {{ post.content|truncatewords:30 }}
-            </p>
-            <small>
-                By {{ post.author.username }} on {{ post.published_date|date:"M d, Y" }}
-            </small>
-        </div>
-    {% empty %}
-        <p> No published posts found for this topic</p>
-    {% endfor %}
-    </div>
-</div>
+<h1>Posts for Topic: {{ topic.name }}</h1>
+{% for post in posts%}
+    <article>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content|truncatewords:30 }}</p>
+        <p>By {{ post.author }}, published {{ post.publish }}</p>
+    </article>
+{% empty %}
+<p>No published post for this topic.</p>
+{% endfor %}
 {% endblock %}
