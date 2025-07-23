@@ -6,15 +6,17 @@ from mtg_blog.context_processors import base_context
 
 @pytest.fixture
 def user(db):
+    """Setup of User"""
     return User.objects.create_user(
         username = 'testuser',
         password= 'password123'
     )
 @pytest.fixture
 def topics_with_posts(db, user):
+    """Test for Post count"""
     topic1 = Topic.objects.create(name='Python', slug = 'python')
     topic2 = Topic.objects.create(name='Django', slug = 'django')
-    topic3 = Topic.objects.create(name='Web Development', slug = 'web-development')
+    topic3 = Topic.objects.create(name='Web Development', slug = 'web-development') #Create to make sure it doesn't show even if the topic is created it doesnt show is there are no posts with the topic
 
     for i in range(5):
         post = Post.objects.create(

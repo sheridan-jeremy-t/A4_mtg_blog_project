@@ -16,6 +16,7 @@ class Topic(models.Model):
         super().save(*args,**kwargs)
 
     def get_absolute_url(self):
+        """Get the absolute url for the topic"""
         return reverse('mtg_blog_app:topic_detail', kwargs= {'slug': self.slug})
 
     def __str__(self):
@@ -60,6 +61,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """Creating the Comment Model"""
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=100)
     email = models.EmailField()

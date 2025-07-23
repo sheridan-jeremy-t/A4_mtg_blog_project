@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from mtg_blog.models import Comment, Post
 
 class TestCommentModel(TestCase):
+    """Test Comment Model"""
     def setUp(self):
         self.user = User.objects.create_user(
             username= 'mtgplayer',

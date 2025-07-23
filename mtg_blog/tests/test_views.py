@@ -5,6 +5,7 @@ from mtg_blog.models import Topic, Post
 
 @pytest.mark.django_db
 def test_home_view_renders_topic(client):
+    """Test the home view renders"""
     user = User.objects.create_user(username='testuser', password='pass')
     topic1 = Topic.objects.create(name='Red Aggro')
     post = Post.objects.create(
@@ -19,7 +20,7 @@ def test_home_view_renders_topic(client):
     assert b'Red Aggro' in response.content
 @pytest.mark.django_db
 def test_topic_list_view(client):
-
+    """Test the topic list view"""
     Topic.objects.create(name='Favourite Art', slug='favourite-art')
     Topic.objects.create(name='MTG Lore', slug='mtg-lore')
 
@@ -34,6 +35,7 @@ def test_topic_list_view(client):
 
 @pytest.mark.django_db
 def test_topic_detail_view(client):
+    """Test the topic detail view"""
     user = User.objects.create_user(username='testuser', password='pass')
     topic = Topic.objects.create(name='Planeswalker', slug='planeswalker')
 

@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from .models import Topic
 
 def home(request):
+    """Create the home page when called"""
     topics = (
         Topic.objects
         .annotate(
@@ -22,6 +23,7 @@ class TopicListView(ListView):
         return Topic.objects.all().order_by('name')
 
 class TopicDetailView(DetailView):
+    """Creating the Detail View"""
     model = Topic
     template_name = 'mtg_blog_app/topic_detail.html'
     context_object_name = 'topic'

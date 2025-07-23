@@ -7,8 +7,6 @@ django-settings-module=mtg_site.settings
 disable =
     C0301, # line-too-long
     C0114, # missing-module-docstring
-    C0115, # missing class docstring
-    C0116, #missing function docstring
     E5142, # imported auth user
     W0611, # unused import
 

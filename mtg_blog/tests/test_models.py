@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from mtg_blog.models import Post, Topic
 
 class TestTopicModel(TestCase):
+    """Test the topic model"""
     def test_topic_creation(self):
         """Test Topic model with the required fields"""
         topic = Topic.objects.create(
@@ -22,6 +23,7 @@ class TestTopicModel(TestCase):
             topic.full_clean()
 
 class TestPostModel(TestCase):
+    """Test the Post Model"""
     def setUp(self):
         self.user = User.objects.create_user(
             username='mtgpro',
@@ -63,8 +65,10 @@ class TestPostModel(TestCase):
             status = 'published'
         )
         self.assertIsNotNone(post.published)
+
 @pytest.mark.django_db
 def test_topic_get_absolute_url():
+    """Test the absolute topic url"""
     topic = Topic.objects.create(name = 'Red Aggro', slug='red-aggro')
     expected_url = '/topic/red-aggro'
     assert topic.get_absolute_url() == expected_url
